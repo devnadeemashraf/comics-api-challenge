@@ -1,23 +1,14 @@
-import { useEffect, useState } from "react";
-import { getComicByID } from "./http";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import Landing from "@/pages/Landing";
 
 function App() {
-  const [test, setTest] = useState({});
-
-  useEffect(() => {
-    getComicByID({ id: "1" })
-      .then((res) => {
-        setTest(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
   return (
-    <>
-      <h1>Hello from APP</h1>
-      {JSON.stringify(test)}
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
